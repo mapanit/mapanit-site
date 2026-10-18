@@ -2,6 +2,7 @@ const labels = {
   critical: 'CRITICAL',
   high: 'HIGH',
   medium: 'MEDIUM',
+  easy: 'EASY',
   project: 'PROJECT',
 }
 

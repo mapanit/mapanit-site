@@ -1,5 +1,5 @@
 import PageTransition from '../components/PageTransition.jsx'
-import { contacts } from '../data/content.js'
+import { contacts, publicProfiles } from '../data/content.js'
 
 export default function Contact() {
   return (
@@ -53,6 +53,39 @@ export default function Contact() {
               </div>
               <span className="arrow">→</span>
             </a>
+             <a
+              className="contact-row"
+              href={contacts.hh}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div>
+                <div className="label">hh.ru</div>
+                <div className="value">
+                  {contacts.hh.replace('https://', '')}
+                </div>
+              </div>
+              <span className="arrow">→</span>
+            </a>
+          </div>
+
+          <h3 className="contact-subtitle">Публичные профили</h3>
+          <div className="contact-list">
+            {publicProfiles.map((profile) => (
+              <a
+                className="contact-row"
+                href={profile.url}
+                key={profile.label}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <div>
+                  <div className="label">профиль</div>
+                  <div className="value">{profile.label}</div>
+                </div>
+                <span className="arrow">↗</span>
+              </a>
+            ))}
           </div>
         </div>
       </div>

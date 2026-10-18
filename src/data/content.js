@@ -9,16 +9,27 @@ export const profile = {
   stats: [
     { value: '9', label: 'месяцев практики' },
     { value: '5', label: 'находок Bug Bounty' },
-    { value: '5', label: 'разобранных машин' },
+    { value: '7', label: 'разобранных машин' },
   ],
 }
 
 export const contacts = {
-  email: 't5vetkov.paul@yandex.ru',
-  telegram: '@Pashantik51',
+  email: 'hubmaileryb@mail.ru',
+  telegram: '@Pashantik52',
   github: 'https://github.com/mapanit',
-  hh: null,
+  hh: 'https://tver.hh.ru/resume/80ef2af6ff0cc455f40039ed1f3572594f394c',
 }
+
+export const publicProfiles = [
+  {
+    label: 'HackerLab',
+    url: 'https://hackerlab.pro/users/Pavel253',
+  },
+  {
+    label: 'Hack The Box',
+    url: 'https://profile.hackthebox.com/profile/01a0e998-0837-737c-af0c-4b85bf18ecca',
+  },
+]
 
 export const skills = {
   'Pentest / AppSec': [
@@ -120,8 +131,8 @@ export const portfolio = [
   },
   {
     id: 'thales',
-    severity: 'critical',
-    tag: 'CRITICAL',
+    severity: 'easy',
+    tag: 'EASY',
     title: 'Thales',
     summary:
       'RCE через Tomcat Manager + эскалация до root. Подбор учётных данных (Metasploit) → reverse shell через WAR-файл → SUID-эскалация через backup-скрипт.',
@@ -134,12 +145,13 @@ export const portfolio = [
       '$ chmod u+s /bin/bash && ./backup.sh',
       '# whoami → root',
     ],
+    writeupFile: 'Thales.md',
     link: 'https://github.com/mapanit',
   },
   {
     id: 'dc7',
-    severity: 'high',
-    tag: 'HIGH',
+    severity: 'easy',
+    tag: 'EASY',
     title: 'DC-7',
     summary:
       'RCE через Drupal + privilege escalation через cron. OSINT по нику из футера сайта → учётные данные на GitHub → RCE через модуль PHP filter.',
@@ -152,12 +164,13 @@ export const portfolio = [
       '$ crontab -l',
       '  */1 * * * * root /opt/scripts/backups.sh',
     ],
+    writeupFile: 'DC-7.md',
     link: 'https://github.com/mapanit',
   },
   {
     id: 'web-n7',
-    severity: 'high',
-    tag: 'HIGH',
+    severity: 'medium',
+    tag: 'MEDIUM',
     title: 'Web Machine N7',
     summary:
       'Обход Broken Access Control (OWASP A01). Обход проверки на клиенте и подмена MD5-хэша роли в cookie через Burp Suite.',
@@ -169,12 +182,13 @@ export const portfolio = [
       '$ Cookie: role=21232f297a57a5a743894a0e4a801fc3',
       '> доступ к /admin получен',
     ],
+    writeupFile: 'Web_Machine_N7.md',
     link: 'https://github.com/mapanit',
   },
   {
     id: 'dc2',
-    severity: 'medium',
-    tag: 'MEDIUM',
+    severity: 'easy',
+    tag: 'EASY',
     title: 'DC-2',
     summary:
       'Эксплуатация WordPress + повышение привилегий. Обход rbash через GTFOBins, брутфорс через WPScan со словарём на базе Cewl.',
@@ -187,12 +201,13 @@ export const portfolio = [
       '$ sudo git help config',
       '  !/bin/bash',
     ],
+    writeupFile: 'DC-2.md',
     link: 'https://github.com/mapanit',
   },
   {
     id: 'sunset',
-    severity: 'medium',
-    tag: 'MEDIUM',
+    severity: 'easy',
+    tag: 'EASY',
     title: 'Sunset',
     summary:
       'Восстановление пароля + повышение привилегий через sudo. Эксплуатация анонимного FTP-доступа, John the Ripper.',
@@ -205,6 +220,42 @@ export const portfolio = [
       '$ sudo ed',
       '  !/bin/sh',
     ],
+    writeupFile: 'Sunset1.md',
+    link: 'https://github.com/mapanit',
+  },
+  {
+    id: 'danglingtree',
+    severity: 'medium',
+    tag: 'MEDIUM',
+    title: 'DanglingTree',
+    summary:
+      'Компрометация домена Windows через WAC RCE, SmarterMail, DPAPI и AD CS ESC1.',
+    stack: ['Windows', 'DPAPI', 'AD CS', 'ESC1'],
+    terminalLines: [
+      '$ smbclient //target/IT',
+      '[+] credentials recovered from PDF',
+      '$ exploit WAC + SmarterMail',
+      '[+] domain administrator access',
+    ],
+    writeupFile: 'danglingtree.md',
+    link: 'https://github.com/mapanit',
+  },
+  {
+    id: 'orion',
+    severity: 'easy',
+    tag: 'EASY',
+    title: 'Orion',
+    summary:
+      'RCE в Craft CMS (CVE-2025-32432) и повышение привилегий через обход аутентификации Telnetd (CVE-2026-24061).',
+    stack: ['Craft CMS', 'CVE-2025-32432', 'Telnetd', 'CVE-2026-24061'],
+    terminalLines: [
+      '$ exploit Craft CMS',
+      '[+] Pre-auth RCE',
+      '$ recover credentials from .env',
+      '$ exploit Telnetd auth bypass',
+      '# whoami → root',
+    ],
+    writeupFile: 'Orion.md',
     link: 'https://github.com/mapanit',
   },
 ]

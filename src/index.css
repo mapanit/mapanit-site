@@ -12,6 +12,7 @@
   --critical: #e5484d;
   --high: #f76b15;
   --medium: #e8b931;
+  --easy: #4ade80;
   --project: #5b8def;
 
   --font-sans: 'IBM Plex Sans', -apple-system, sans-serif;
@@ -553,6 +554,11 @@ footer {
   background: rgba(232, 185, 49, 0.12);
 }
 
+.severity-easy {
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.12);
+}
+
 .severity-project {
   color: var(--project);
   background: rgba(91, 141, 239, 0.12);
@@ -613,6 +619,112 @@ footer {
   color: var(--accent);
 }
 
+.writeup-back {
+  display: inline-block;
+  margin-bottom: 28px;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.markdown-content {
+  max-width: 860px;
+  overflow-wrap: anywhere;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4 {
+  margin: 1.7em 0 0.7em;
+}
+
+.markdown-content h1 {
+  font-size: 30px;
+}
+
+.markdown-content h2 {
+  font-size: 23px;
+}
+
+.markdown-content h3 {
+  font-size: 18px;
+}
+
+.markdown-content p,
+.markdown-content ul,
+.markdown-content ol,
+.markdown-content blockquote {
+  max-width: none;
+  margin: 0 0 1em;
+}
+
+.markdown-content a {
+  color: var(--accent);
+}
+
+.markdown-content pre {
+  overflow-x: auto;
+  margin: 1.2em 0;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #0e1216;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.markdown-content :not(pre) > code {
+  padding: 2px 5px;
+  border-radius: 4px;
+  background: var(--panel-raised);
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+.markdown-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.2em auto;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.markdown-content blockquote {
+  padding: 10px 16px;
+  border-left: 3px solid var(--accent);
+  color: var(--text-dim);
+  background: var(--panel);
+}
+
+.markdown-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-content table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+}
+
+.markdown-content th,
+.markdown-content td {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+
+.markdown-content th {
+  background: var(--panel-raised);
+}
+
+.writeup-error {
+  color: var(--critical);
+}
+
 .embla-controls {
   display: flex;
   gap: 10px;
@@ -657,6 +769,11 @@ footer {
   border: 1px solid var(--border);
   border-radius: 8px;
   overflow: hidden;
+}
+
+.contact-subtitle {
+  margin-top: 36px;
+  font-size: 18px;
 }
 
 .contact-row {

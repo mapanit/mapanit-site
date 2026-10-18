@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import SeverityBadge from './SeverityBadge.jsx'
 
 export default function TerminalCard({ item }) {
@@ -26,14 +27,20 @@ export default function TerminalCard({ item }) {
             <span key={s}>{s}</span>
           ))}
         </div>
-        <a
-          className="term-link"
-          href={item.link}
-          target="_blank"
-          rel="noreferrer"
-        >
-          write-up на GitHub →
-        </a>
+        {item.writeupFile ? (
+          <Link className="term-link" to={`/portfolio/${item.id}`}>
+            Читать write-up →
+          </Link>
+        ) : (
+          <a
+            className="term-link"
+            href={item.link}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Проект на GitHub →
+          </a>
+        )}
       </div>
     </div>
   )

@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react'
 import { Routes, Route, useLocation, NavLink } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import Home from './pages/Home.jsx'
@@ -5,6 +6,8 @@ import Experience from './pages/Experience.jsx'
 import Portfolio from './pages/Portfolio.jsx'
 import Contact from './pages/Contact.jsx'
 import { contacts } from './data/content.js'
+
+const WriteUp = lazy(() => import('./pages/WriteUp.jsx'))
 
 const navItems = [
   { to: '/', label: 'главная' },
@@ -64,6 +67,14 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/experience" element={<Experience />} />
             <Route path="/portfolio" element={<Portfolio />} />
+            <Route
+              path="/portfolio/:writeup"
+              element={
+                <Suspense fallback={<p className="container page">Открываю write-up…</p>}>
+                  <WriteUp />
+                </Suspense>
+              }
+            />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </AnimatePresence>
