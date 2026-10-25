@@ -21,6 +21,11 @@ export default function TerminalCard({ item }) {
 
       <div className="term-info">
         <h3>{item.title}</h3>
+        {item.platform && item.difficulty && (
+          <div className="term-meta">
+            {item.platform} · {item.difficulty}
+          </div>
+        )}
         <p>{item.summary}</p>
         <div className="term-stack">
           {item.stack.map((s) => (

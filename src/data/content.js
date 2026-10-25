@@ -163,6 +163,8 @@ export const portfolio = [
       '# whoami → root',
     ],
     writeupFile: 'Thales.md',
+    platform: 'VulnHub',
+    difficulty: 'easy',
     link: 'https://github.com/mapanit',
   },
   {
@@ -182,6 +184,8 @@ export const portfolio = [
       '  */1 * * * * root /opt/scripts/backups.sh',
     ],
     writeupFile: 'DC-7.md',
+    platform: 'VulnHub',
+    difficulty: 'easy',
     link: 'https://github.com/mapanit',
   },
   {
@@ -200,6 +204,8 @@ export const portfolio = [
       '> доступ к /admin получен',
     ],
     writeupFile: 'Web_Machine_N7.md',
+    platform: 'VulnHub',
+    difficulty: 'medium',
     link: 'https://github.com/mapanit',
   },
   {
@@ -219,6 +225,8 @@ export const portfolio = [
       '  !/bin/bash',
     ],
     writeupFile: 'DC-2.md',
+    platform: 'VulnHub',
+    difficulty: 'easy',
     link: 'https://github.com/mapanit',
   },
   {
@@ -238,6 +246,8 @@ export const portfolio = [
       '  !/bin/sh',
     ],
     writeupFile: 'Sunset1.md',
+    platform: 'VulnHub',
+    difficulty: 'easy',
     link: 'https://github.com/mapanit',
   },
   {
@@ -255,6 +265,8 @@ export const portfolio = [
       '[+] domain administrator access',
     ],
     writeupFile: 'danglingtree.md',
+    platform: 'Hack The Box',
+    difficulty: 'medium',
     link: 'https://github.com/mapanit',
   },
   {
@@ -273,6 +285,8 @@ export const portfolio = [
       '# whoami → root',
     ],
     writeupFile: 'Orion.md',
+    platform: 'Hack The Box',
+    difficulty: 'easy',
     link: 'https://github.com/mapanit',
   },
   {
@@ -291,6 +305,8 @@ export const portfolio = [
       '> HTB FireFlow write-up',
     ],
     writeupFile: 'Fireflow.md',
+    platform: 'Hack The Box',
+    difficulty: 'medium',
     link: 'https://github.com/mapanit',
   },
   {
@@ -309,6 +325,8 @@ export const portfolio = [
       '> HTB MakeSense write-up',
     ],
     writeupFile: 'MakeSense.md',
+    platform: 'Hack The Box',
+    difficulty: 'medium',
     link: 'https://github.com/mapanit',
   },
 ]

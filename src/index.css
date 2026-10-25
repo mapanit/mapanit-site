@@ -493,18 +493,58 @@ footer {
 
 /* ---------- Portfolio ---------- */
 
-.embla {
-  overflow: hidden;
+.portfolio-section + .portfolio-section {
+  margin-top: 56px;
 }
 
-.embla__container {
-  display: flex;
+.portfolio-section-title {
+  font-size: 21px;
+  margin-bottom: 20px;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
+  align-items: stretch;
 }
 
-.embla__slide {
-  flex: 0 0 auto;
-  width: min(360px, 82vw);
+.portfolio-grid > div {
+  min-width: 0;
+}
+
+.portfolio-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.portfolio-filter {
+  display: grid;
+  gap: 6px;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.portfolio-filter select {
+  min-width: 180px;
+  padding: 9px 32px 9px 10px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--panel);
+  color: var(--text);
+  font: inherit;
+}
+
+.portfolio-filter select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.portfolio-empty {
+  color: var(--text-faint);
 }
 
 .term-card {
@@ -589,6 +629,13 @@ footer {
 .term-info h3 {
   font-size: 16px;
   margin-bottom: 8px;
+}
+
+.term-meta {
+  margin-bottom: 10px;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 11px;
 }
 
 .term-info p {
@@ -725,36 +772,6 @@ footer {
   color: var(--critical);
 }
 
-.embla-controls {
-  display: flex;
-  gap: 10px;
-  margin-top: 24px;
-}
-
-.embla-btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1px solid var(--border);
-  background: transparent;
-  color: var(--text);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: border-color 0.15s ease;
-}
-
-.embla-btn:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
-.embla-btn:disabled {
-  opacity: 0.3;
-  cursor: default;
-}
-
 /* ---------- Contact ---------- */
 
 .contact-page {
@@ -812,8 +829,18 @@ footer {
 /* ---------- Responsive ---------- */
 
 @media (max-width: 860px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .hero {
     grid-template-columns: 1fr;
+  }
+
+  @media (max-width: 560px) {
+    .portfolio-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   .skills-grid {
