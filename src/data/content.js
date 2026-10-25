@@ -9,7 +9,7 @@ export const profile = {
   stats: [
     { value: '9', label: 'месяцев практики' },
     { value: '5', label: 'находок Bug Bounty' },
-    { value: '7', label: 'разобранных машин' },
+    { value: '9', label: 'разобранных машин' },
   ],
 }
 
@@ -112,6 +112,23 @@ export const education = {
 
 
 export const portfolio = [
+  {
+    id: 'shadowscope',
+    severity: 'project',
+    tag: 'PROJECT',
+    title: 'ShadowScope',
+    summary:
+      'Модульный CLI-инструмент на Python для авторизованной разведки и анализа поверхности атаки. Сохраняет результаты в SQLite и формирует отчёты.',
+    stack: ['Python', 'CLI', 'Recon', 'SQLite'],
+    terminalLines: [
+      '$ python main.py --check-tools',
+      '[+] external tools checked',
+      '[+] scope validation enabled',
+      '[+] results saved to SQLite',
+      '> reports: Markdown / HTML / JSON',
+    ],
+    link: 'https://github.com/mapanit/ShadowScope',
+  },
   {
     id: 'cyberscope',
     severity: 'project',
@@ -256,6 +273,42 @@ export const portfolio = [
       '# whoami → root',
     ],
     writeupFile: 'Orion.md',
+    link: 'https://github.com/mapanit',
+  },
+  {
+    id: 'fireflow',
+    severity: 'medium',
+    tag: 'MEDIUM',
+    title: 'FireFlow',
+    summary:
+      'Разбор цепочки компрометации Kubernetes-кластера: уязвимость Langflow, ошибки проверки JWT и эскалация через права Kubernetes RBAC.',
+    stack: ['Langflow', 'JWT', 'Kubernetes', 'RBAC'],
+    terminalLines: [
+      '$ analyze exposed services',
+      '[+] Langflow entry point identified',
+      '[+] Kubernetes permissions reviewed',
+      '[+] privilege escalation path documented',
+      '> HTB FireFlow write-up',
+    ],
+    writeupFile: 'Fireflow.md',
+    link: 'https://github.com/mapanit',
+  },
+  {
+    id: 'makesense',
+    severity: 'medium',
+    tag: 'MEDIUM',
+    title: 'MakeSense',
+    summary:
+      'Разбор цепочки уязвимостей WordPress: Stored XSS, получение удалённого выполнения кода и повышение привилегий на Linux.',
+    stack: ['WordPress', 'Stored XSS', 'RCE', 'Linux'],
+    terminalLines: [
+      '$ inspect WordPress theme',
+      '[+] stored XSS in admin workflow',
+      '[+] plugin upload leads to RCE',
+      '[+] OCR service privilege escalation',
+      '> HTB MakeSense write-up',
+    ],
+    writeupFile: 'MakeSense.md',
     link: 'https://github.com/mapanit',
   },
 ]

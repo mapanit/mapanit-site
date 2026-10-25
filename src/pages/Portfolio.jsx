@@ -30,7 +30,7 @@ export default function Portfolio() {
       <div className="container page">
         <div className="eyebrow">портфолио</div>
         <h2 className="section-title">
-          Дипломный проект и разборы учебных машин
+          Проекты и write-ups
         </h2>
 
         <div className="embla" ref={emblaRef}>
