@@ -329,4 +329,24 @@ export const portfolio = [
     difficulty: 'medium',
     link: 'https://github.com/mapanit',
   },
+  {
+    id: 'principal',
+    severity: 'medium',
+    tag: 'MEDIUM',
+    title: 'Principal',
+    summary:
+      ' обход аутентификации в Java-библиотеке **pac4j-jwt** (**CVE-2026-29000**), позволивший подделать зашифрованный JWT-токен и получить доступ к административной панели.',
+    stack: ['WordPress', 'Stored XSS', 'RCE', 'Linux'],
+    terminalLines: [
+      '$ inspect WordPress theme',
+      '[+] stored XSS in admin workflow',
+      '[+] plugin upload leads to RCE',
+      '[+] OCR service privilege escalation',
+      '> HTB Principal write-up',
+    ],
+    writeupFile: 'Principal.md',
+    platform: 'Hack The Box',
+    difficulty: 'medium',
+    link: 'https://github.com/mapanit',
+  },
 ]
