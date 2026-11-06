@@ -6,10 +6,10 @@ const labels = {
   project: 'PROJECT',
 }
 
-export default function SeverityBadge({ severity }) {
+export default function SeverityBadge({ severity, label, className = '' }) {
   return (
-    <span className={`severity-badge severity-${severity}`}>
-      {labels[severity] || severity.toUpperCase()}
+    <span className={`severity-badge severity-${severity} ${className}`.trim()}>
+      {label || labels[severity] || severity.toUpperCase()}
     </span>
   )
 }

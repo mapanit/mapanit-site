@@ -1,7 +1,19 @@
 import { Link } from 'react-router-dom'
 import SeverityBadge from './SeverityBadge.jsx'
+import { difficultyLabels } from '../data/content.js'
 
 export default function TerminalCard({ item }) {
+  const difficultyLabel = difficultyLabels[item.difficulty] || item.difficulty
+  const badgeClassName =
+    item.platform === 'PortSwigger' && item.difficulty === 'Expert'
+      ? 'severity-badge-portswigger-expert'
+      : item.platform === 'PortSwigger' && item.difficulty === 'Apprentice'
+        ? 'severity-badge-portswigger-apprentice'
+        : item.platform === 'Hack The Box' &&
+            item.difficulty.toLowerCase() === 'hard'
+          ? 'severity-badge-htb-hard'
+          : ''
+
   return (
     <div className="term-card">
       <div className="term-head">
@@ -10,7 +22,17 @@ export default function TerminalCard({ item }) {
           <span className="dot" />
           <span className="dot" />
         </div>
-        <SeverityBadge severity={item.severity} />
+        <SeverityBadge
+          severity={item.severity}
+          label={
+            item.platform === 'PortSwigger' ||
+            (item.platform === 'Hack The Box' &&
+              item.difficulty.toLowerCase() === 'hard')
+              ? difficultyLabel
+              : undefined
+          }
+          className={badgeClassName}
+        />
       </div>
 
       <div className="term-body">
@@ -23,7 +45,7 @@ export default function TerminalCard({ item }) {
         <h3>{item.title}</h3>
         {item.platform && item.difficulty && (
           <div className="term-meta">
-            {item.platform} · {item.difficulty}
+            {item.platform} · {difficultyLabel}
           </div>
         )}
         <p>{item.summary}</p>

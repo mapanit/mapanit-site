@@ -202,6 +202,24 @@ footer {
   color: var(--text-faint);
 }
 
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-links a {
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.footer-links a:hover,
+.home-profiles a:hover,
+.home-section-link:hover {
+  color: var(--accent);
+}
+
 /* ---------- Page sections ---------- */
 
 .page {
@@ -388,6 +406,53 @@ footer {
   color: var(--text-dim);
 }
 
+.home-section {
+  margin-top: 56px;
+}
+
+.home-section-link {
+  display: inline-block;
+  margin-top: 18px;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.certificate-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 680px;
+  padding: 20px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.certificate-card h3 {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.certificate-card p {
+  font-size: 13px;
+}
+
+.home-profiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 44px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-faint);
+}
+
+.home-profiles a {
+  color: var(--text-dim);
+}
+
 /* ---------- Timeline (Опыт) ---------- */
 
 .timeline {
@@ -547,6 +612,20 @@ footer {
   color: var(--text-faint);
 }
 
+.writeup-group + .writeup-group {
+  margin-top: 36px;
+}
+
+.writeup-group-title {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.writeup-group-description {
+  margin-bottom: 18px;
+  font-size: 13px;
+}
+
 .term-card {
   background: var(--panel);
   border: 1px solid var(--border);
@@ -602,6 +681,21 @@ footer {
 .severity-project {
   color: var(--project);
   background: rgba(91, 141, 239, 0.12);
+}
+
+.severity-badge-portswigger-expert {
+  color: #c084fc;
+  background: rgba(192, 132, 252, 0.14);
+}
+
+.severity-badge-portswigger-apprentice {
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.12);
+}
+
+.severity-badge-htb-hard {
+  color: #f87171;
+  background: rgba(248, 113, 113, 0.14);
 }
 
 .term-body {
@@ -674,9 +768,87 @@ footer {
   font-size: 13px;
 }
 
+.writeup-loading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.writeup-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: writeup-spin 0.8s linear infinite;
+}
+
+@keyframes writeup-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.writeup-progress {
+  position: sticky;
+  top: 12px;
+  z-index: 5;
+  width: min(860px, 100%);
+  margin-bottom: 18px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: rgba(18, 22, 27, 0.96);
+  backdrop-filter: blur(8px);
+}
+
+.writeup-progress-label {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 16px;
+  margin-bottom: 8px;
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.writeup-progress-track {
+  height: 4px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--border);
+}
+
+.writeup-progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+  transition: width 350ms ease;
+}
+
+.writeup-load-sentinel {
+  height: 1px;
+}
+
 .markdown-content {
   max-width: 860px;
   overflow-wrap: anywhere;
+  animation: writeup-section-enter 260ms ease both;
+}
+
+@keyframes writeup-section-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .markdown-content h1,
@@ -833,14 +1005,13 @@ footer {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .hero {
-    grid-template-columns: 1fr;
+  .certificate-card {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
-  @media (max-width: 560px) {
-    .portfolio-grid {
-      grid-template-columns: 1fr;
-    }
+  .hero {
+    grid-template-columns: 1fr;
   }
 
   .skills-grid {
@@ -860,7 +1031,7 @@ footer {
   }
 
   .timeline-period {
-    grid-column: 1 / -1;
+    grid-column: 2;
     text-align: left;
     margin-bottom: 8px;
   }
@@ -869,7 +1040,100 @@ footer {
     justify-content: flex-start;
   }
 
+  .timeline-content {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 560px) {
+  .container,
+  .nav-inner,
+  .footer-inner {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .page {
+    padding-top: 40px;
+    padding-bottom: 64px;
+  }
+
+  .nav-inner {
+    flex-direction: column;
+    gap: 12px;
+  }
+
   .nav-links {
-    display: none;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 8px 10px;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    gap: 28px;
+    padding: 20px 0 48px;
+  }
+
+  .hero h1 {
+    font-size: clamp(30px, 9vw, 36px);
+  }
+
+  .hero-meta {
+    flex-wrap: wrap;
+    gap: 8px 16px;
+  }
+
+  .hero-actions .btn,
+  .certificate-card .btn {
+    min-height: 44px;
+  }
+
+  .portfolio-filters,
+  .portfolio-filter,
+  .portfolio-filter select {
+    width: 100%;
+  }
+
+  .contact-row {
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .contact-row .value {
+    overflow-wrap: anywhere;
+    text-align: right;
+  }
+
+  .footer-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .footer-links {
+    gap: 12px;
+  }
+
+  .markdown-content h1 {
+    font-size: 26px;
+  }
+
+  .markdown-content h2 {
+    font-size: 21px;
+  }
+
+  .markdown-content pre {
+    padding: 12px;
+    font-size: 12px;
   }
 }

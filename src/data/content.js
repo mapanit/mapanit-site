@@ -5,11 +5,15 @@ export const profile = {
   tagline:
     'Пентест веб-приложений и инфраструктуры. От анализа защищённости RED OS до собственной платформы автоматизации пентеста.',
   about:
-    'Начинающий специалист по информационной безопасности с фокусом на пентест веб-приложений и инфраструктуры. За 9 месяцев практики и стажировок прошёл путь от анализа защищённости RED OS до разработки платформы автоматизации пентеста (дипломный проект). Активно участвую в Bug Bounty (Standoff 365, BI.ZONE) и CTF, веду на GitHub разборы прохождения учебных машин с описанием эксплуатации реальных классов уязвимостей.',
+    'Специалист по информационной безопасности с фокусом на пентест веб-приложений и инфраструктуры. ' +
+    'За 9 месяцев практики и стажировок прошёл путь от анализа защищённости RED OS до разработки ' +
+    'платформы автоматизации пентеста (дипломный проект). Активно участвую в Bug Bounty ' +
+    '(Standoff 365, BI.ZONE) и CTF, веду на GitHub разборы прохождения учебных машин с описанием ' +
+    'эксплуатации реальных классов уязвимостей.',
   stats: [
     { value: '9', label: 'месяцев практики' },
     { value: '5', label: 'находок Bug Bounty' },
-    { value: '9', label: 'разобранных машин' },
+    { value: '12', label: 'разобранных машин' },
   ],
 }
 
@@ -110,6 +114,13 @@ export const education = {
     'Дипломный проект — платформа для автоматизации пентеста: объединяет Nmap, Nuclei, Retire.js и SSL/TLS-сканер в едином интерфейсе. Python/FastAPI + React, деплой через Docker Compose.',
 }
 
+export const difficultyLabels = {
+  easy: 'Easy',
+  medium: 'Medium',
+  Apprentice: 'Ученик',
+  Practitioner: 'Практикующий',
+  Expert: 'Эксперт',
+}
 
 export const portfolio = [
   {
@@ -290,6 +301,26 @@ export const portfolio = [
     link: 'https://github.com/mapanit',
   },
   {
+    id: 'management',
+    severity: 'easy',
+    tag: 'EASY',
+    title: 'Management',
+    summary:
+      'Pre-auth RCE в OpenAM (CVE-2026-33439), извлечение учётных данных из конфигурации GLPI и повышение привилегий через sudo и rdiff-backup.',
+    stack: ['OpenAM', 'GLPI', 'RCE', 'Privilege Escalation'],
+    terminalLines: [
+      '$ identify OpenAM on sso.management.htb',
+      '[+] CVE-2026-33439: pre-auth RCE',
+      '$ recover LDAP credentials from GLPI config',
+      '[+] user access obtained',
+      '> sudo rdiff-backup: privilege escalation',
+    ],
+    writeupFile: 'Management.md',
+    platform: 'Hack The Box',
+    difficulty: 'easy',
+    link: 'https://github.com/mapanit',
+  },
+  {
     id: 'fireflow',
     severity: 'medium',
     tag: 'MEDIUM',
@@ -335,18 +366,212 @@ export const portfolio = [
     tag: 'MEDIUM',
     title: 'Principal',
     summary:
-      ' обход аутентификации в Java-библиотеке **pac4j-jwt** (**CVE-2026-29000**), позволивший подделать зашифрованный JWT-токен и получить доступ к административной панели.',
-    stack: ['WordPress', 'Stored XSS', 'RCE', 'Linux'],
+      'Обход аутентификации в pac4j-jwt (CVE-2026-29000), подделка зашифрованного JWT и повышение привилегий через SSH Certificate Authority.',
+    stack: ['pac4j-jwt', 'JWT/JWE', 'SSH CA', 'Linux'],
     terminalLines: [
-      '$ inspect WordPress theme',
-      '[+] stored XSS in admin workflow',
-      '[+] plugin upload leads to RCE',
-      '[+] OCR service privilege escalation',
+      '$ identify pac4j-jwt 6.0.3',
+      '[+] CVE-2026-29000: authentication bypass',
+      '$ forge encrypted JWT and access the app',
+      '[+] SSH CA key found in svc-deploy home',
       '> HTB Principal write-up',
     ],
     writeupFile: 'Principal.md',
     platform: 'Hack The Box',
     difficulty: 'medium',
     link: 'https://github.com/mapanit',
+  },
+   {
+    id: 'connected',
+    severity: 'easy',
+    tag: 'EASY',
+    title: 'Connected',
+    summary:
+      'Основной вектор атаки — **SQL-инъекция (CVE-2025-57819)** в административной панели FreePBX, позволившая выполнить произвольный код без аутентификации.',
+    stack: ['FreePBX', 'SQL Injection', 'RCE', 'Linux'],
+    terminalLines: [
+      '$ python3 watchTowr-vs-FreePBX-CVE-2025-57819.py',
+      '[+] **FreePBX (CVE-2025-57819)** identified',
+      '[+] SQL injection exploited',
+      '[+] OCR service privilege escalation',
+      '> HTB Connected write-up',
+    ],
+    writeupFile: 'Connected.md',
+    platform: 'Hack The Box',
+    difficulty: 'easy',
+    link: 'https://github.com/mapanit',
+  },
+  {
+    id: 'portswigger-ssrf-blacklist',
+    severity: 'medium',
+    tag: 'Practitioner',
+    title: 'SSRF with blacklist-based input filter',
+    summary:
+      'Обход фильтрации SSRF с помощью альтернативного формата loopback-адреса и двойного URL-кодирования пути.',
+    stack: ['PortSwigger', 'SSRF', 'URL encoding'],
+    terminalLines: [
+      '$ test stockApi URL validation',
+      '[+] blacklist-based host filter identified',
+      '[+] path filter bypass documented',
+      '> PortSwigger Web Security Academy',
+    ],
+    writeupFile: 'SSRF with blacklist-based input filter.md',
+    platform: 'PortSwigger',
+    difficulty: 'Practitioner',
+    link: 'https://portswigger.net/web-security/ssrf',
+  },
+  {
+    id: 'portswigger-url-access-control',
+    severity: 'medium',
+    tag: 'Practitioner',
+    title: 'URL-based access control can be circumvented',
+    summary:
+      'Разбор обхода контроля доступа, зависящего от URL и заголовка Referer, в лабораторной Web Security Academy.',
+    stack: ['PortSwigger', 'Access Control', 'Referer'],
+    terminalLines: [
+      '$ review URL-based access checks',
+      '[+] Referer-based restriction identified',
+      '[+] access control bypass documented',
+      '> PortSwigger Web Security Academy',
+    ],
+    writeupFile: 'URL-based access control can be circumvented.md',
+    platform: 'PortSwigger',
+    difficulty: 'Practitioner',
+    link: 'https://portswigger.net/web-security/access-control',
+  },
+  {
+    id: 'portswigger-xxe-local-dtd',
+    severity: 'medium',
+    tag: 'Эксперт',
+    title: 'Exploiting XXE to retrieve data by repurposing a local DTD',
+    summary:
+      'Разбор Blind XXE: использование локального DTD для извлечения содержимого файла через сообщение об ошибке.',
+    stack: ['PortSwigger', 'XXE', 'XML'],
+    terminalLines: [
+      '$ inspect XML parser behavior',
+      '[+] external entity processing identified',
+      '[+] local DTD repurposed',
+      '[+] file contents retrieved via error response',
+      '> PortSwigger Web Security Academy',
+    ],
+    writeupFile: 'Exploiting XXE to retrieve data by repurposing a local DTD.md',
+    platform: 'PortSwigger',
+    difficulty: 'Expert',
+    link: 'https://portswigger.net/web-security/xxe/blind',
+  },
+  {
+    id: 'portswigger-xss-bypass-csrf',
+    severity: 'medium',
+    tag: 'Practitioner',
+    title: 'Exploiting XSS to bypass CSRF defenses',
+    summary:
+      'Разбор связки XSS и CSRF: получение токена и выполнение защищённого действия от имени пользователя.',
+    stack: ['PortSwigger', 'XSS', 'CSRF'],
+    terminalLines: [
+      '$ inspect account update flow',
+      '[+] CSRF token requirement identified',
+      '[+] XSS used to perform authenticated action',
+      '[+] email change completed',
+      '> PortSwigger Web Security Academy',
+    ],
+    writeupFile: 'Exploiting XSS to bypass CSRF defenses.md',
+    platform: 'PortSwigger',
+    difficulty: 'Practitioner',
+    link: 'https://portswigger.net/web-security/cross-site-scripting',
+  },
+  {
+    id: 'abducted',
+    severity: 'medium',
+    tag: 'MEDIUM',
+    title: 'Abducted',
+    summary:
+      'Компрометация Linux-системы через уязвимость службы печати Samba (CVE-2026-4480) с последующим повышением привилегий.',
+    stack: ['Linux', 'Samba', 'CVE-2026-4480', 'Privilege Escalation'],
+    terminalLines: [
+      '$ enumerate SMB services',
+      '[+] vulnerable Samba print service identified',
+      '[+] CVE-2026-4480: code execution',
+      '[+] privilege escalation path documented',
+      '> HTB Abducted write-up',
+    ],
+    writeupFile: 'Abducted.md',
+    platform: 'Hack The Box',
+    difficulty: 'medium',
+    link: 'https://github.com/mapanit',
+  },
+  {
+    id: 'portswigger-2fa-broken-logic',
+    severity: 'medium',
+    tag: 'Практикующий',
+    title: '2FA broken logic',
+    summary:
+      'Разбор ошибки логики двухфакторной аутентификации, позволяющей получить доступ к учётной записи другого пользователя.',
+    stack: ['PortSwigger', 'Authentication', '2FA'],
+    terminalLines: [
+      '$ analyze the two-factor login flow',
+      '[+] account identity can be changed during authentication',
+      '[+] 2FA logic bypass documented',
+      '> PortSwigger Web Security Academy',
+    ],
+    writeupFile: '2FA broken logic.md',
+    platform: 'PortSwigger',
+    difficulty: 'Practitioner',
+    link: 'https://portswigger.net/web-security/authentication',
+  },
+  {
+    id: 'portswigger-blind-os-command-injection-oob',
+    severity: 'medium',
+    tag: 'Практикующий',
+    title: 'Blind OS command injection with out-of-band interaction',
+    summary:
+      'Обнаружение Blind OS command injection с подтверждением выполнения команд через out-of-band взаимодействие.',
+    stack: ['PortSwigger', 'OS Command Injection', 'Out-of-band'],
+    terminalLines: [
+      '$ inspect server-side command processing',
+      '[+] out-of-band interaction confirmed',
+      '[+] blind command injection documented',
+      '> PortSwigger Web Security Academy',
+    ],
+    writeupFile: 'Blind OS command injection with out-of-band interaction.md',
+    platform: 'PortSwigger',
+    difficulty: 'Practitioner',
+    link: 'https://portswigger.net/web-security/os-command-injection',
+  },
+  {
+    id: 'portswigger-http-smuggling-cl-te',
+    severity: 'medium',
+    tag: 'Практикующий',
+    title: 'HTTP request smuggling, basic CL.TE vulnerability',
+    summary:
+      'Разбор уязвимости CL.TE request smuggling, возникающей из-за разного разбора Content-Length и Transfer-Encoding прокси-сервером и бэкендом.',
+    stack: ['PortSwigger', 'HTTP Request Smuggling', 'CL.TE'],
+    terminalLines: [
+      '$ compare front-end and back-end request parsing',
+      '[+] CL.TE desynchronization identified',
+      '[+] request smuggling demonstrated',
+      '> PortSwigger Web Security Academy',
+    ],
+    writeupFile: 'HTTP request smuggling, basic CL.TE vulnerability.md',
+    platform: 'PortSwigger',
+    difficulty: 'Practitioner',
+    link: 'https://portswigger.net/web-security/request-smuggling',
+  },
+  {
+    id: 'portswigger-password-reset-poisoning-middleware',
+    severity: 'medium',
+    tag: 'Практикующий',
+    title: 'Password reset poisoning via middleware',
+    summary:
+      'Отравление ссылки сброса пароля через заголовок X-Forwarded-Host, обработанный промежуточным ПО.',
+    stack: ['PortSwigger', 'Authentication', 'Password Reset', 'X-Forwarded-Host'],
+    terminalLines: [
+      '$ inspect password reset link generation',
+      '[+] X-Forwarded-Host influences the reset URL',
+      '[+] password reset poisoning documented',
+      '> PortSwigger Web Security Academy',
+    ],
+    writeupFile: 'Password reset poisoning via middleware.md',
+    platform: 'PortSwigger',
+    difficulty: 'Practitioner',
+    link: 'https://portswigger.net/web-security/host-header',
   },
 ]

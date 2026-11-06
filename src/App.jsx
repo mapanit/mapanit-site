@@ -5,7 +5,7 @@ import Home from './pages/Home.jsx'
 import Experience from './pages/Experience.jsx'
 import Portfolio from './pages/Portfolio.jsx'
 import Contact from './pages/Contact.jsx'
-import { contacts } from './data/content.js'
+import { contacts, publicProfiles } from './data/content.js'
 
 const WriteUp = lazy(() => import('./pages/WriteUp.jsx'))
 
@@ -49,7 +49,21 @@ function Footer() {
     <footer>
       <div className="footer-inner">
         <span>© {new Date().getFullYear()} Цветков Павел</span>
-        <span>{contacts.github.replace('https://', '')}</span>
+        <nav className="footer-links" aria-label="Ссылки на профили и связь">
+          <a href={contacts.github} target="_blank" rel="noreferrer">GitHub</a>
+          <a
+            href={`https://t.me/${contacts.telegram.replace('@', '')}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Telegram
+          </a>
+          {publicProfiles.map((profile) => (
+            <a href={profile.url} key={profile.label} target="_blank" rel="noreferrer">
+              {profile.label}
+            </a>
+          ))}
+        </nav>
       </div>
     </footer>
   )
